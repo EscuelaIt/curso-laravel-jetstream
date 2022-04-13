@@ -5063,6 +5063,60 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/alpine.js":
+/*!********************************!*\
+  !*** ./resources/js/alpine.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+__webpack_require__(/*! ./alpine/guarded-form */ "./resources/js/alpine/guarded-form.js");
+
+__webpack_require__(/*! ./alpine/helpers */ "./resources/js/alpine/helpers.js");
+
+/***/ }),
+
+/***/ "./resources/js/alpine/guarded-form.js":
+/*!*********************************************!*\
+  !*** ./resources/js/alpine/guarded-form.js ***!
+  \*********************************************/
+/***/ (() => {
+
+window.guardedForm = function () {
+  return {
+    guarded: false,
+    guardForm: function guardForm() {
+      var _this = this;
+
+      window.addEventListener('beforeunload', function (event) {
+        if (_this.guarded === true) {
+          event.returnValue = 'Wait';
+        }
+      });
+    }
+  };
+};
+
+/***/ }),
+
+/***/ "./resources/js/alpine/helpers.js":
+/*!****************************************!*\
+  !*** ./resources/js/alpine/helpers.js ***!
+  \****************************************/
+/***/ (() => {
+
+window.helpers = function () {
+  return {
+    text: 'sdsd',
+    showMessage: function showMessage(message) {
+      alert(message);
+      alert(this.text);
+      window.guardedForm().guarded = false;
+    }
+  };
+};
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -5076,6 +5130,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
+
+__webpack_require__(/*! ./alpine */ "./resources/js/alpine.js");
+
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 
 /***/ }),

@@ -12,7 +12,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <x-guarded-form method="POST" action="{{ route('login') }}">
             @csrf
 
             <div>
@@ -43,6 +43,6 @@
                     {{ __('Log in') }}
                 </x-jet-button>
             </div>
-        </form>
+        </x-guarded-form>
     </x-jet-authentication-card>
 </x-guest-layout>

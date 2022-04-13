@@ -23,10 +23,10 @@
         <td class="px-2"><img src="#" alt="Title"></td>
         <td class="px-2">5 hours ago</td>
         <td class="flex px-2 flex-row">
-            <x-jet-button class="mr-2 bg-blue-300">
+            <x-jet-button class="mr-2 bg-blue-300" x-bind:disabled="creating">
                 Edit
             </x-jet-button>
-            <x-jet-button class="mr-2 bg-red-300">
+            <x-jet-button class="mr-2 bg-red-300" x-on:click="window.helpers().showMessage(text)">
                 Remove
             </x-jet-button>
         </td>
@@ -37,7 +37,7 @@
         <td class="px-2"><img src="#" alt="Title"></td>
         <td class="px-2">10 hours ago</td>
         <td class="flex px-2 flex-row">
-            <x-jet-button class="mr-2 bg-blue-300">
+            <x-jet-button class="mr-2 bg-blue-300" x-bind:disabled="creating">
                 Edit
             </x-jet-button>
             <x-jet-button class="mr-2 bg-red-300">
@@ -51,7 +51,7 @@
         <td class="px-2"><img src="#" alt="Title"></td>
         <td class="px-2">12 hours ago</td>
         <td class="flex px-2 flex-row">
-            <x-jet-button class="mr-2 bg-blue-300">
+            <x-jet-button class="mr-2 bg-blue-300" x-bind:disabled="creating">
                 Edit
             </x-jet-button>
             <x-jet-button class="mr-2 bg-red-300">
