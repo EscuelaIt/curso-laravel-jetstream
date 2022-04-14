@@ -32,7 +32,7 @@
         </div>
 
         <div class="p-5">
-            <x-table></x-table>
+            <x-table :files="$files" />
         </div>
 
         <div x-cloak x-show="creating">

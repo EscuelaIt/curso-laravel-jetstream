@@ -23,9 +23,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [FileController::class, 'index'])
+        ->name('dashboard');
 });
 
-Route::resource('files', FileController::class);
+Route::resource('files', FileController::class)
+    ->except(['index']);
