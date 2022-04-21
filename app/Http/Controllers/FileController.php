@@ -14,9 +14,7 @@ class FileController extends Controller
      */
     public function index()
     {
-        return view('dashboard')->with([
-            'files' => File::all(),
-        ]);
+        return view('dashboard');
     }
 
     /**

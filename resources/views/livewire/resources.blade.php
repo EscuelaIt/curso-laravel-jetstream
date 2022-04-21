@@ -1,6 +1,6 @@
 <div>
     <div x-data="{
-        creating: false,
+        creating: @entangle('creating'),
         text: 'Create'
     }">
         <div class="flex justify-center">
@@ -32,13 +32,13 @@
         </div>
 
         <div class="p-5">
-            <x-table></x-table>
+            <x-table :files="$files" />
         </div>
 
-        <div x-cloak x-show="creating">
+        <x-jet-modal wire:model="creating">
             <x-files.create-file
                 trigger="creating"
             />
-        </div>
+        </x-jet-modal>
     </div>
 </div>
