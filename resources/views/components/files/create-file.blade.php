@@ -1,12 +1,13 @@
 @props([
     'trigger',
+    'action' => 'create'
 ])
 
 <div x-show="{{ $trigger }}">
     <h1 class="font-bold text-2xl text-center mt-10">Create a New File</h1>
     <x-guarded-form
         class="flex flex-col justify-center w-full bg-gray-100 mt-10 p-10"
-        wire:submit.prevent="create"
+        wire:submit.prevent="{{ $this->action }}"
     >
         @csrf
         <x-jet-label for="title" class="pl-2">Media Name</x-jet-label>

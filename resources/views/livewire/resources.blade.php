@@ -18,6 +18,7 @@
             </h1>
         </div>
 
+
         <div class="p-5 flex justify-end">
             <x-button-link
                 x-on:click="
@@ -31,13 +32,18 @@
             </x-button-link>
         </div>
 
+        <div class="p-5 flex justify-end">
+            <x-search-bar model="search" />
+        </div>
+
         <div class="p-5">
-            <x-table :files="$files" />
+            <x-table :files="$files"/>
         </div>
 
         <x-jet-modal wire:model="creating">
             <x-files.create-file
                 trigger="creating"
+                action="{{ $action }}"
             />
         </x-jet-modal>
     </div>

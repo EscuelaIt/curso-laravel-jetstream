@@ -1,6 +1,5 @@
 @props([
-    'files',
-    'onRemove',
+    'files'
 ])
 
 <table class="table-fixed">
@@ -18,7 +17,6 @@
             <th class="w-1/12">
                 Created at
             </th>
-          <th class="w-3/12"></th>
         </tr>
     </thead>
   <tbody>
@@ -36,21 +34,6 @@
                 </div>
             </td>
             <td class="px-2">{{ $file->created_at_for_humans }}</td>
-            <td class="flex px-2 flex-row">
-                <x-jet-button class="mr-2 bg-blue-300"
-                    x-bind:disabled="creating"
-                    wire:click="resolveFile({{ $file->id }})"
-                >
-                    Edit
-                </x-jet-button>
-                <x-jet-button
-                    class="mr-2 bg-red-300"
-                    wire:click="remove('{{ $file->id }}')"
-                >
-                    Remove
-                </x-jet-button>
-            </td>
-
         </tr>
     @endforeach
   </tbody>
