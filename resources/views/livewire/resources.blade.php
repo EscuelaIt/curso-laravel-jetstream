@@ -1,7 +1,7 @@
 <div>
     <div x-data="{
         creating: @entangle('creating'),
-        text: 'Create'
+        text: @entangle('text'),
     }">
         <div class="flex justify-center">
             <h1 class="
@@ -34,6 +34,10 @@
 
         <div class="p-5 flex justify-end">
             <x-search-bar model="search" />
+        </div>
+
+        <div class="p-5 flex justify-start">
+            {{ $files->links() }}
         </div>
 
         <div class="p-5">

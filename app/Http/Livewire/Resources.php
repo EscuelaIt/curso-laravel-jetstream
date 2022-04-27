@@ -4,12 +4,14 @@ namespace App\Http\Livewire;
 
 use App\Models\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class Resources extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, WithPagination;
 
     public File $file;
 
@@ -17,9 +19,17 @@ class Resources extends Component
 
     public $search;
 
+    public $random;
+
     public $creating = false;
 
+    public $text = 'Creating';
+
     public $action = 'create';
+
+    protected $queryString = [
+        'search' => ['except' => ''],
+    ];
 
     protected $rules = [
         'file.title' => 'required|min:5|max:255',
@@ -30,6 +40,12 @@ class Resources extends Component
     public function mount()
     {
         $this->file = new File;
+        $this->random = Str::random(5);
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 
     public function resolveFile($id)
@@ -52,6 +68,8 @@ class Resources extends Component
         $this->file = new File;
 
         $this->reset(['media']);
+
+        $this->random = Str::random(5);
 
         $this->creating = false;
     }
@@ -80,7 +98,11 @@ class Resources extends Component
 
         $this->reset(['media']);
 
+        $this->random = Str::random(5);
+
         $this->creating = false;
+
+        $this->emit('fileAdded');
     }
 
     public function render()
@@ -88,7 +110,7 @@ class Resources extends Component
         return view('livewire.resources')->with([
             'files' => File::where('title', 'like', '%' . $this->search . '%')
                         ->orWhere('description', 'like', '%' . $this->search . '%')
-                        ->get(),
+                        ->paginate(3),
         ]);
     }
 }

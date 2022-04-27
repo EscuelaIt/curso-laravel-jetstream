@@ -39,7 +39,7 @@ $maxWidth = [
         }
     })"
     x-on:close.stop="show = false"
-    x-on:keydown.escape.window="show = false"
+    x-on:keydown.escape.window="show = false; text='Creating'"
     x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()"
     x-on:keydown.shift.tab.prevent="prevFocusable().focus()"
     x-show="show"
@@ -47,7 +47,7 @@ $maxWidth = [
     class="jetstream-modal fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
     style="display: none;"
 >
-    <div x-show="show" class="fixed inset-0 transform transition-all" x-on:click="show = false" x-transition:enter="ease-out duration-300"
+    <div x-show="show" class="fixed inset-0 transform transition-all" x-on:click="show = false; text='Creating'" x-transition:enter="ease-out duration-300"
                     x-transition:enter-start="opacity-0"
                     x-transition:enter-end="opacity-100"
                     x-transition:leave="ease-in duration-200"

@@ -38,7 +38,7 @@
             <td class="px-2">{{ $file->created_at_for_humans }}</td>
             <td class="flex px-2 flex-row">
                 <x-jet-button class="mr-2 bg-blue-300"
-                    x-bind:disabled="creating"
+                    {{-- x-bind:disabled="creating" --}}
                     wire:click="resolveFile({{ $file->id }})"
                 >
                     Edit

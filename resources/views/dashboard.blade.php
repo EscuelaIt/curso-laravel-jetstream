@@ -12,6 +12,7 @@
 
                 <livewire:counter /> --}}
                 <livewire:resources />
+                <livewire:regular-table />
                 {{-- <x-resources :files="$files"/> --}}
             </div>
         </div>

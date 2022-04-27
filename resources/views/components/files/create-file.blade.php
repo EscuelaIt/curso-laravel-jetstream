@@ -33,14 +33,22 @@
                 type="file"
                 wire:model="media"
                 class="border border-gray-300 w-full p-5"
+                id="{{ $this->random }}"
             />
         </div>
         <x-jet-input-error for="media" class="mt-2" />
 
         <div class="mt-10 m-auto flex flex-row">
+            {{-- <x-button-link
+                class="rounded-full mr-1"
+                x-on:click.prevent="{{ $trigger }}=false"
+            >
+                Cancel
+            </x-button-link> --}}
             <x-jet-button
                 class="rounded-full mr-1"
-                x-on:click="{{ $trigger }}=false"
+                x-on:click.prevent="{{ $trigger }}=false; text = 'Creating'"
+                type="button"
             >
                 Cancel
             </x-jet-button>
